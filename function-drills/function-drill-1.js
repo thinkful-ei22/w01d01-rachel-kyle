@@ -12,13 +12,26 @@ function yearOfBirth(age) {
 }
 
 function whoAmI(name, age) {
-  if (!(name && age)) {
-    console.error('Arguments not valid');
-  }
-  else {
+  try {
+    if (!(name && age)) {
+      throw 'Arguments not valid';
+    }
+    if (typeof age !== 'number') {
+      throw 'Age must be a number';
+    }
+    if (typeof name !== 'string') {
+      throw 'name must be a string';
+    }
+
     console.log(`Hi, my name is ${name} and I'm ${age} years old.`);
     yearOfBirth(age);
+
+  }  
+  
+  catch(err) {
+    console.error("error: " + err + ".")
   }
+
 }
 
-whoAmI('Kyle', '35');
+whoAmI('Kyle', "35");
